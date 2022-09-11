@@ -50,38 +50,38 @@ class HelloWorldExample implements AutoCloseable
         }
 
     }
-public void playGame(){
-    int userChoice;
-    do {
-            System.out.println("please choose the number of your choice: \n 1.Rock\n 2.Scissors\n 3.Paper\n 4.Lizard \n 5.spock \n 6.Exit");
-            Scanner sc = new Scanner(System.in);
-            do {
-                System.out.println("Please enter your choice!");
-                while (!sc.hasNextInt()) {
-                    System.out.println("That's not a number!");
-                    sc.next(); // this is important!
-                }
-                userChoice = sc.nextInt();
-            } while (userChoice < 0 || userChoice > 6);
-            if (userChoice == 6) System.exit(0);
-            Random random = new Random();
-            int computerChoice = random.nextInt(5 - 1 + 1) + 1;
-            System.out.println("the computer chose " + getName(computerChoice));
-            if (computerChoice == userChoice)
-                System.out.println("Draw try again");
-            else
-                System.out.println(findWinner(computerChoice, userChoice));
-        }while (true);
-}
-public String getName(int number){
-        switch (number){
-            case 1:return "Rock";
-            case 2:return "Scissors";
-            case 3:return "Paper";
-            case 4:return "Lizard";
-            default:return "Spock";
-        }
-}
+    public void playGame(){
+        int userChoice;
+        do {
+                System.out.println("please choose the number of your choice: \n 1.Rock\n 2.Scissors\n 3.Paper\n 4.Lizard \n 5.spock \n 6.Exit");
+                Scanner sc = new Scanner(System.in);
+                do {
+                    System.out.println("Please enter your choice!");
+                    while (!sc.hasNextInt()) {
+                        System.out.println("That's not a number!");
+                        sc.next(); // this is important!
+                    }
+                    userChoice = sc.nextInt();
+                } while (userChoice < 0 || userChoice > 6);
+                if (userChoice == 6) System.exit(0);
+                Random random = new Random();
+                int computerChoice = random.nextInt(5 - 1 + 1) + 1;
+                System.out.println("the computer chose " + getName(computerChoice));
+                if (computerChoice == userChoice)
+                    System.out.println("Draw try again");
+                else
+                    System.out.println(findWinner(computerChoice, userChoice));
+            }while (true);
+    }
+    public String getName(int number){
+            switch (number){
+                case 1:return "Rock";
+                case 2:return "Scissors";
+                case 3:return "Paper";
+                case 4:return "Lizard";
+                default:return "Spock";
+            }
+    }
     public static void main( String... args ) throws Exception
     {
         try(HelloWorldExample greeter = new HelloWorldExample( "bolt://localhost:7687", "admin", "admin" ))
