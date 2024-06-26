@@ -21,7 +21,7 @@ If there is a relation between two nodes then the user wins for example if the u
 3. Create username and password to access the DB
 4. Update the bellow parameters
   - Neo4j URL
-  - username
-  - password
-  - database name
+  - Username
+  - Password
+  - Database Name
 5. Run the game and enjoy the graph based game :P
