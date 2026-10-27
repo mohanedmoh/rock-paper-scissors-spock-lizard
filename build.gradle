@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+group = 'demo.game'
+description = 'Rock, paper, scissors, lizard, Spock on Neo4j: the Java driver demo for the Neo4j for Developers series'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // The official Java driver. Version 6 needs Java 17 or later.
+    implementation 'org.neo4j.driver:neo4j-java-driver:6.3.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'demo.game.Game'
+}
+
+// `./gradlew run` must pass the keyboard on to the game.
+tasks.named('run') {
+    standardInput = System.in
+}
