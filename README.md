@@ -3,7 +3,6 @@
 A command-line game in Java that keeps its rules, and every game you play, in a Neo4j graph.
 
 This is the code for Part 4 of the "Neo4j for Developers" series: *Build a Small Game on Neo4j with the Java Driver*.
-<!-- TODO: add the URL of the Part 4 article here, as a link on the title above, when it is published. -->
 
 ## What it does
 
@@ -174,7 +173,7 @@ The game also creates a uniqueness constraint named `gesture_name` on `Gesture.n
 
 Run both with `cypher-shell` inside the container, as in the quick start.
 
-**`cypher/part4_history.cypher`** asks the history of the player `demo`. It holds the five questions from the article:
+**`cypher/part4_history.cypher`** asks the history of the player `demo`. It holds the five questions that the game asks at the end of a game:
 
 1. How often did I win, lose or draw?
 2. Which gesture do I play most?
