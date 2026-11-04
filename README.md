@@ -3,7 +3,7 @@
 A command-line game in Java that keeps its rules, and every game you play, in a Neo4j graph.
 
 This is the code for Part 4 of the "Neo4j for Developers" series: *Build a Small Game on Neo4j with the Java Driver*.
-TODO: add the URL of the Part 4 article here.
+<!-- TODO: add the URL of the Part 4 article here, as a link on the title above, when it is published. -->
 
 ## What it does
 
@@ -11,7 +11,7 @@ You play rock, paper, scissors, lizard, Spock against the computer. The rules ar
 
 ## Requirements
 
-- Java 17 or later. Tested with Java 17 and Java 21.
+- Java 21 or later. Tested with Java 21 and Java 25.
 - Docker, to run Neo4j.
 - Neo4j 2026.10. Tested with Community Edition 2026.10.1.
 - Neo4j Java driver 6.3.0. Gradle downloads it for you.
@@ -154,7 +154,7 @@ The game also creates a uniqueness constraint named `gesture_name` on `Gesture.n
 
 ```text
 .
-├── build.gradle                    Gradle build: the driver, Java 17, the main class
+├── build.gradle                    Gradle build: the driver, Java 21, the main class
 ├── settings.gradle                 Project name
 ├── gradlew, gradlew.bat            Gradle wrapper scripts (Unix, Windows)
 ├── gradle/wrapper/                 Wrapper jar and the Gradle version to download
@@ -165,8 +165,6 @@ The game also creates a uniqueness constraint named `gesture_name` on `Gesture.n
 ├── cypher/
 │   ├── part4_history.cypher        The history questions, for the demo player
 │   └── part4_cleanup.cypher        Removes the demo player's data
-├── game.java                       The first version of the game (2022). Gradle does not build it.
-├── UPGRADE_NOTES.md                What was upgraded and what was tested
 ├── LICENSE
 ├── .gitignore
 └── .gitattributes
@@ -261,22 +259,29 @@ Port 7474 can clash in the same way. The error then names 7474.
 
 ### Java is too old
 
-Gradle stops with:
+With Java 17, Gradle starts but the build stops with:
+
+```text
+> Java compilation initialization error
+    error: invalid source release: 21
+```
+
+With Java 11 or older, Gradle itself refuses to start:
 
 ```text
 Gradle requires JVM 17 or later to run. Your build is currently configured to use JVM 11.
 ```
 
-Check your version:
+Both mean the same thing. The game needs Java 21 or later. Check your version:
 
 ```bash
 java -version
 ```
 
-Install Java 17 or later. If you have several versions, pick one for this terminal. On macOS:
+Install Java 21 or later. If you have several versions, pick one for this terminal. On macOS:
 
 ```bash
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 ```
 
 ### Connection refused, or Neo4j is still starting
